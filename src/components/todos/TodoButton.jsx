@@ -15,7 +15,7 @@ function TodoButton() {
                 className='flex items-center px-8 py-4 bg-emerald-400 text-cyan-950 font-bold rounded-2xl text-lg hover:bg-emerald-500'
                 onClick={sendTodo}
             >
-                Crear todo {count}<span className='text-emerald-100 px-2'><IoMdAddCircle /></span>
+                Crear todo<span className='text-emerald-100 px-2'><IoMdAddCircle /></span>
             </button>
         </div>
     )

@@ -5,7 +5,7 @@ function TodoSearch({ search, setSearch }) {
     return (
         <>
             <input
-                className='p-4 w-full rounded-xl text-cyan-950'
+                className='p-4 my-6 w-full rounded-xl text-cyan-950'
                 type='text'
                 placeholder='Todo search'
                 name="todo"
