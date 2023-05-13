@@ -4,22 +4,7 @@ import { useLocalStorage } from '../../hooks/useLocalStorage'
 import AppUI from './AppUI'
 
 function App() {
-  const { 
-    data: todos, 
-    completeItem, 
-    removeItem, 
-    completed: todosCompleted, 
-    total: totalTodos, 
-    loading, 
-    error 
-  } = useLocalStorage('TODOS', defaultTodos);
-  const [search, setSearch] = useState('');
-  const searchedTodos = todos.filter(todo => {
-    const todoText = todo.title.toLocaleLowerCase();
-    const todoSearch = search.toLocaleLowerCase();
-    return todoText.includes(todoSearch);
-  });
-
+  
   return (
     <AppUI
       todos={
