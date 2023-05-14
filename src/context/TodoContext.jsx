@@ -1,10 +1,37 @@
-import { createcontext } from 'react';
+import { createContext, useState } from 'react';
+import { defaultTodos } from '../utils/todos';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
-const TodoContext = createcontext();
+const TodoContext = createContext();
 
 function TodoProvider({ children }) {
+    const {
+        data: todos,
+        completeItem,
+        removeItem,
+        completed: todosCompleted,
+        total: totalTodos,
+        loading,
+        error
+    } = useLocalStorage('TODOS', defaultTodos);
+    const [search, setSearch] = useState('');
+    const searchedTodos = todos.filter(todo => {
+        const todoText = todo.title.toLocaleLowerCase();
+        const todoSearch = search.toLocaleLowerCase();
+        return todoText.includes(todoSearch);
+    });
     return (
-        <TodoContext.Provider>
+        <TodoContext.Provider value={{
+            todos: todos,
+            completeItem,
+            removeItem,
+            todosCompleted: todosCompleted,
+            totalTodos: totalTodos,
+            loading,
+            error,
+            search,
+            searchedTodos
+        }}>
             {children}
         </TodoContext.Provider>
     )
