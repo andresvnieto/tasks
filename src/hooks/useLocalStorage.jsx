@@ -46,7 +46,7 @@ export const useLocalStorage = (itemStorageName = 'TODOS', initialValue) => {
             } finally {
                 setLoading(false);
             }
-        }, 5000);
+        }, 1000);
         return;
     }, []);
 

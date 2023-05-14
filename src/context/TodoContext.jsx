@@ -8,6 +8,7 @@ function TodoProvider({ children }) {
     const [modalState, setModalState] = useState(false);
     const {
         data: todos,
+        saveData: saveTodos,
         completeItem,
         removeItem,
         completed: todosCompleted,
@@ -21,14 +22,33 @@ function TodoProvider({ children }) {
         const todoSearch = search.toLocaleLowerCase();
         return todoText.includes(todoSearch);
     });
-    const handleModal = () =>{
-        setStateModal(!modalState);
+    const handleModal = () => {
+        console.log('Click');
+        let currentModalState = modalState;
+        setModalState(!currentModalState);
+    }
+    const sortByProperty = (array, property) => array.sort((a, b) => a[property] - b[property])
+    const addTodo = (e, todo) => {
+        e.preventDefault();
+        const updateTodos = [...todos];
+        const sortTodos = sortByProperty(updateTodos, 'id');
+        console.log(sortTodos);
+        const newIndex = sortTodos[sortTodos.length - 1].id + 1;
+        const newTodo = {
+            id: newIndex,
+            title: todo,
+            completed: false
+        };
+        sortTodos.push(newTodo);
+        saveTodos(sortTodos);
+        setModalState(false)
     }
     return (
         <TodoContext.Provider value={{
             todos: todos,
             completeItem,
             removeItem,
+            saveTodos,
             todosCompleted: todosCompleted,
             totalTodos: totalTodos,
             loading,
@@ -37,7 +57,8 @@ function TodoProvider({ children }) {
             setSearch,
             searchedTodos,
             modalState,
-            handleModal
+            handleModal,
+            addTodo
         }}>
             {children}
         </TodoContext.Provider>

@@ -1,5 +1,10 @@
 export const defaultTodos = [
     {
+        id: 3,
+        title: 'Dibujar',
+        completed: true
+    },
+    {
         id: 0,
         title: 'Hacer tareas',
         completed: true
@@ -12,11 +17,6 @@ export const defaultTodos = [
     {
         id: 2,
         title: 'Estudiar Platzi',
-        completed: true
-    },
-    {
-        id: 3,
-        title: 'Dibujar',
         completed: true
     }
 ];
