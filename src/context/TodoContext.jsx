@@ -5,6 +5,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage';
 const TodoContext = createContext();
 
 function TodoProvider({ children }) {
+    const [modalState, setModalState] = useState(false);
     const {
         data: todos,
         completeItem,
@@ -20,6 +21,9 @@ function TodoProvider({ children }) {
         const todoSearch = search.toLocaleLowerCase();
         return todoText.includes(todoSearch);
     });
+    const handleModal = () =>{
+        setStateModal(!modalState);
+    }
     return (
         <TodoContext.Provider value={{
             todos: todos,
@@ -30,7 +34,10 @@ function TodoProvider({ children }) {
             loading,
             error,
             search,
-            searchedTodos
+            setSearch,
+            searchedTodos,
+            modalState,
+            handleModal
         }}>
             {children}
         </TodoContext.Provider>

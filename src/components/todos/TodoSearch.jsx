@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { TodoContext } from '../../context/TodoContext'
 
-function TodoSearch({ search, setSearch }) {
+function TodoSearch() {
+    const { search, setSearch} = useContext(TodoContext)
     const handleSearch = ({ target: { value } }) => setSearch(value)
     return (
         <>
