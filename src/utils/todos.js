@@ -1,7 +1,7 @@
 export const defaultTodos = [
     {
         id: 3,
-        title: 'Dibujar',
+        title: 'Dibujar1',
         completed: true
     },
     {
