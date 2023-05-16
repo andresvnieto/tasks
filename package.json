@@ -10,7 +10,6 @@
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview --port 3001"
   },
-  "homepage": "https://andresvnieto.github.io/tasks",
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
     "react": "^18.2.0",
